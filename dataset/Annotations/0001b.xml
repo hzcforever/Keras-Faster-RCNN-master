@@ -1,0 +1,26 @@
+<annotation>
+	<folder>良性预处理</folder>
+	<filename>0001b.jpg</filename>
+	<path>E:\研究生\甲状腺预处理\良性预处理\0001b.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>448</width>
+		<height>448</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>0</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>181</xmin>
+			<ymin>208</ymin>
+			<xmax>271</xmax>
+			<ymax>326</ymax>
+		</bndbox>
+	</object>
+</annotation>
