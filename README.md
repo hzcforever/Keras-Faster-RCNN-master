@@ -16,7 +16,11 @@
 
 ## 数据集的标注
 
-通过 labelImg 软件对医学图像数据集进行标注，格式为 PascalVOC(一张图像对应一个 xml 文件)。
+通过 labelImg 标记软件对医学图像数据集进行标注，格式为 PascalVOC(一张图像对应一个 XML 文件)。
+
+<div align="center"><img src="/project_img//thyroid_label.jpg" width="800px"/></div>
+
+<div align="center"><img src="/project_img//thyroid_xml.jpg" width="800px"/></div>
 
 训练集与测试集以5：1的比例分割，其中存在数据集的不均衡现象，即 negative(1100) 比 positive(520) 的数据量多出将近一半，暂时将 negative 的数据截取与 positive 数据相同数据量的图像，之后再考虑通过数据增强等方式增加 positive 的数据量。
 
