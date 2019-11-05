@@ -2,7 +2,7 @@
 
 ## 实验背景
 
-本实验基于两千多张私有数据集，拟通过预训练好的 model 和 weights，结合 faster-rcnn 模型对预处理后的数据集进行再训练，从而达到对甲状腺结节进行目标检测的目的，辅助甲状腺医学图像的分类。
+本实验基于两千多张私有数据集，拟通过预训练好的 model 和 weights，结合 faster-rcnn 目标检测模型对预处理后的数据集进行再训练，从而达到对甲状腺结节进行目标检测的目的，辅助甲状腺医学图像的分类。
 
 ### 不包含目标检测的迁移学习分类
 
@@ -10,7 +10,7 @@
 
 ## 实验环境及配置
 
-实验所用的服务器部署在国外，服务器共32块 CPU、8块 GPU（8G/块）。实验环境的版本如下：Python 3.6、Keras 2.2.4、Pytorch 0.4.1。
+实验所用的服务器部署在国外，服务器共32块 CPU、8块 GPU（8G/块）。实验环境的版本如下：Ubuntu 18.04、Python 3.6、Keras 2.2.4、Pytorch 0.4.1、Tensorflow 1.10.0(supports FMA, AVX, AVX2, SSE4.1, SSE4.2)。
 
 先通过 Xftp 连接服务器，将代码和数据集上传，再通过 Xshell 连接服务器，连接成功之后，根据需要可以激活不同的虚拟环境，有 tensorflow、pytorch、keras、caffe 可以选择，通过 source activate (keras、tensorflow 等) 激活后，便可运行程序。
 
@@ -39,5 +39,27 @@
   - 需要读取训练时保存的 config.pickle 文件和训练好的 model.hdf5
 
 ## 训练过程
+
+### 模型的预训练
+
+<div align="center"><img src="/project_img//train.jpg" width="800px"/></div>
+
+利用细胞的医学图像进行预训练，Epoch=12, epoch_length=200，每个 epoch 耗时 30 min。
+
+对细胞测试集进行目标检测：
+
+<div align="center"><img src="/project_img//test.jpg" width="800px"/></div>
+
+结果如下：
+
+<div align="center"><img src="/project_img//0.png" width="800px"/></div>
+
+<div align="center"><img src="/project_img//1.png" width="800px"/></div>
+
+<div align="center"><img src="/project_img//2.png" width="800px"/></div>
+
+### 私有数据集训练
+
+保存预训练好的模型，并在甲状腺私有数据集上，继续训练...
 
 ## 实验结果与展示
