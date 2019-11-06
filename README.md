@@ -46,7 +46,7 @@
 
 <div align="center"><img src="/project_img//train.jpg" width="800px"/></div>
 
-利用四百多张细胞显微图进行模型的预训练，Epoch=12，epoch_length=200，每个 epoch 耗时约 30 min。
+利用四百多张细胞显微图在 model/resnet50_weights_tf_dim_ordering_tf_kernels.h5 的基础上对模型进行预训练，Epoch=12，epoch_length=200，每个 epoch 耗时约 30 min。
 
 对细胞测试集进行目标检测：
 
@@ -55,16 +55,16 @@
 部分结果如下：
 
 <div align="center"><img src="/project_img//1.png" width="500px"/></div>
-<div align="center"><b>cell detection</b></div>
+<div align="center"><b>cell detection1</b></div>
 
 <div align="center"><img src="/project_img//2.png" width="500px"/></div>
-<div align="center"><b>cell detection</b></div>
+<div align="center"><b>cell detection2</b></div>
 
 ### 私有数据集训练
 
-保存预训练好的模型为 dataset/model.h5，并通过标注好的甲状腺超声图像私有数据集上，继续训练。
+保存预训练好的模型为 dataset/model.hdf5，然后在标注好的甲状腺超声图像私有数据集上，继续训练。
 
-由于数据集标注工作比较繁琐，现用201张已标注的甲状腺图像在 pre_model 的基础上训练，等后续所有数据集标注完成后再加入新的数据。训练的 Epoch=12，epoch_length=100，每个 epoch 耗时约 7 min。
+由于数据集标注工作比较繁琐，现用201张(negative: 101, positive: 100)已标注好的甲状腺超声图像在 dataset/model.hdf5 的基础上训练，等后续所有数据集标注完成后再加入新的数据。训练的 Epoch=12，epoch_length=100，每个 epoch 耗时约 7 min。
 
 训练过程如下：
 
@@ -73,8 +73,6 @@
 对若干甲状腺测试图片进行预测：
 
 <div align="center"><img src="/project_img//thyroid_test.jpg" width="700px"/></div>
-
-可以看出，其中有的图像出现了多个目标检测框，总的分类效果已经比只用迁移分类模型好很多了，具体的性能参数值后续再通过计算列出来。
 
 部分结果如下：
 
@@ -89,6 +87,8 @@
 
 <div align="center"><img src="/project_img//positive2.png" width="500px"/></div>
 <div align="center"><b>positive</b></div>
+
+可以看出，有的图像中出现了多个目标检测框，后续将会通过修改代码只保留预测概率最大的检测框。大体上看总的分类效果比只用迁移分类模型要好一些，具体的性能参数后续会通过计算列出来。
 
 ## 实验结果分析
 
